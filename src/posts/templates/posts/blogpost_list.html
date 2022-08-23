@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Blog</title>{% endblock %}
+
+{% block content %}
+
+<h1>Le blog</h1>
+{% for post in posts %}
+<article>
+    <h2>{{ post.title }}</h2>
+    <p>Publié par : {{ post.author_or_default }} le : {{ post.created_on|date:'j F Y'}}</p>
+    <div>{{ post.content|safe|truncatewords:50 }}</div>
+
+    <form action="{% url 'posts:post' slug=post.slug %}">
+        <button>Read More</button>
+    </form>
+</article>
+{% endfor %}
+
+{% endblock %}

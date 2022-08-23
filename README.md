@@ -1,0 +1,1 @@
+Blog Template with Django (Without front)
